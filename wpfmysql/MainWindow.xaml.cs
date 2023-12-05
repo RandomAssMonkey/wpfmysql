@@ -30,7 +30,7 @@ namespace wpfmysql
 
 		private void Read()
 		{
-			EmployeeTable.ItemsSource = employeeService.GetAll();
+			employeeTable.ItemsSource = employeeService.GetAll();
 		}
 
 		private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -45,7 +45,24 @@ namespace wpfmysql
 
 		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
 		{
-
+			Employee selectedItem = (Employee)employeeTable.SelectedItem;
+			if (selectedItem != null)
+			{
+				MessageBoxResult result = MessageBox.Show("Biztos Törölni szeretnéd?", "Biztos?", MessageBoxButton.YesNo);
+				if (result == MessageBoxResult.Yes)
+				{
+					employeeService.Delete(selectedItem.Id);
+					employeeTable.ItemsSource = employeeService.GetAll();
+				}
+				else
+				{
+					employeeTable.ItemsSource = employeeService.GetAll();
+				}
+			}
+			else
+			{
+				employeeTable.ItemsSource = employeeService.GetAll();
+			}
 		}
 	}
 }
