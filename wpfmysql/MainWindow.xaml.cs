@@ -20,15 +20,17 @@ namespace wpfmysql
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		EmployeeService employeeService;
 		public MainWindow()
 		{
 			InitializeComponent();
+			employeeService = new EmployeeService();
 			Read();
 		}
 
 		private void Read()
 		{
-			
+			EmployeeTable.ItemsSource = employeeService.GetAll();
 		}
 
 		private void AddBtn_Click(object sender, RoutedEventArgs e)
