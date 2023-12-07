@@ -28,7 +28,7 @@ namespace wpfmysql
 			string sql = "INSERT INTO dolgozok(nev,nem,kor,fizetes) VALUES (@name,@gender,@age,@salary)";
 			MySqlCommand command = connection.CreateCommand();
 			command.CommandText = sql;
-			command.Parameters.AddWithValue("@Name", employee.Name);
+			command.Parameters.AddWithValue("@name", employee.Name);
 			command.Parameters.AddWithValue("@gender", employee.Gender);
 			command.Parameters.AddWithValue("@age", employee.Age);
 			command.Parameters.AddWithValue("@salary", employee.Salary);
@@ -39,10 +39,10 @@ namespace wpfmysql
 		public bool Update(int id, Employee newValues)
 		{
 			OpenConnection();
-			string sql = $"UPDATE dolgozok SET nev = @name, nem = @gender, kor = @age, salary = @salary WHERE id = @id ";
+			string sql = $"UPDATE dolgozok SET nev = @name, nem = @gender, kor = @age, fizetes = @salary WHERE id = @id ";
 			MySqlCommand command = connection.CreateCommand();
 			command.CommandText = sql;
-			command.Parameters.AddWithValue("@Name", newValues.Name);
+			command.Parameters.AddWithValue("@name", newValues.Name);
 			command.Parameters.AddWithValue("@gender", newValues.Gender);
 			command.Parameters.AddWithValue("@age", newValues.Age);
 			command.Parameters.AddWithValue("@salary", newValues.Salary);

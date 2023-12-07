@@ -61,7 +61,9 @@ namespace wpfmysql
 			}
 			else
 			{
+				MessageBox.Show("A törléshez válasszon ki dolgozót");
 				employeeTable.ItemsSource = employeeService.GetAll();
+				return;
 			}
 		}
 	}
